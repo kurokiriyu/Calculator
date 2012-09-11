@@ -7,7 +7,7 @@ import java.text.DecimalFormat;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.SharedPreferences;
-import android.text.ClipboardManager;
+import android.text.*;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -24,13 +24,14 @@ public class CalculatorActivity extends Activity {	// これ以降のthisはCalc
     public String strTemp = "";
     public Integer oprator = 0;
     public String strResult;
+    private static Map<Intefer, FunctionLogic> funcMap;
     
 //  public String hoge = this.strTemp;			// thisは使える。このときのthisはインスタンス変数である。
 //  public String hoge = this.foo;				// thisは使える。このときのthisはインスタンス変数である。
 //    　　　　　　　左辺値　　右辺値
 //  public static String hog = this.strTemp;	// thisは使えない。
 //	public static void onCre() {
-//  　　hog = this.strTemp;							// thisは使えない。
+//  　　hog = this.strTemp;						// thisは使えない。
 //	}
     
     @Override
@@ -157,6 +158,7 @@ public class CalculatorActivity extends Activity {	// これ以降のthisはCalc
     
     public void functionKeyOnClick(View v) {
     	((Vibrator)getSystemService(VIBRATOR_SERVICE)).vibrate(50);
+    	
     	switch(v.getId()) {
     	case R.id.keypadAC:
     		strTemp = "";
